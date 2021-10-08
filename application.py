@@ -1,16 +1,16 @@
 import json
 from flask import Flask, render_template, request,redirect,g
 from flask.helpers import url_for
-from flask.wrappers import Response
+# from flask.wrappers import Response
 import requests
 #from requests.api import request
-from LogIn.user import get_user
-from flask_login import LoginManager,login_user,current_user
+# from LogIn.user import get_user
+from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from werkzeug.security import generate_password_hash, check_password_hash
+# from werkzeug.security import generate_password_hash, check_password_hash
 from user import users
-from werkzeug.urls import url_parse
+# from werkzeug.urls import url_parse
 import forms
 import hashlib
 from functools import wraps
