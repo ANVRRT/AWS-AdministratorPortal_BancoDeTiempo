@@ -17,14 +17,14 @@ from functools import wraps
 from flask_cors import CORS
 import base64
 
-app= Flask(__name__)
-CORS(app)
-app.config['SECRET_KEY'] = 'hard to guess string'
-app.static_folder='static'
-login_manager = LoginManager(app)
+application= Flask(__name__)
+CORS(application)
+application.config['SECRET_KEY'] = 'hard to guess string'
+application.static_folder='static'
+login_manager = LoginManager(application)
 
-bootstrap = Bootstrap(app)
-moment = Moment(app)
+bootstrap = Bootstrap(application)
+moment = Moment(application)
 user=None
 
 @login_manager.user_loader
@@ -44,7 +44,7 @@ def login_required(f):
     return decorated_function
 
 
-@app.route('/LoadImg/<data>',methods=['GET','POST'])
+@application.route('/LoadImg/<data>',methods=['GET','POST'])
 def loadImg(data):
     data.encode("utf-8")
     data=base64.b64decode(data)
@@ -52,7 +52,7 @@ def loadImg(data):
     print(data)
     return(render_template('formHelpers.html',data=data,base=base64))
 
-@app.route('/Perfil/<data>',methods=['GET','POST'])
+@application.route('/Perfil/<data>',methods=['GET','POST'])
 @login_required
 def perfil(data):
     data.encode("utf-8")
@@ -64,7 +64,7 @@ def perfil(data):
 
 
 
-@app.route('/Inicio',methods=['GET','POST'])
+@application.route('/Inicio',methods=['GET','POST'])
 @login_required
 def inicio():
     headings = ("Usuario", "Nombre", "Apellido", "Identificacion",
@@ -75,7 +75,7 @@ def inicio():
     
     return render_template('inicio.html', headings=headings, dataT=respose,json=json, base=base64)
     
-@app.route('/',methods=['GET','POST'])
+@application.route('/',methods=['GET','POST'])
 def login():
     global user
     user=None
