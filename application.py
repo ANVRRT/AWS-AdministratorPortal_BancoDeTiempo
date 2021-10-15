@@ -42,9 +42,9 @@ def load_user(user_id):
 
 def login_required(f):
 
+    global user
     @wraps(f)
     def decorated_function(*args,**kwargs):
-        global user
         if user is None:
             return redirect(url_for('login'))
         return f(*args, **kwargs)
