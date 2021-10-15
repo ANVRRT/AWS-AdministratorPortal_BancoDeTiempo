@@ -9,7 +9,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 # from werkzeug.security import generate_password_hash, check_password_hash
-from user import users
+#from user import users
 # from werkzeug.urls import url_parse
 import forms
 import hashlib
@@ -53,7 +53,7 @@ def loadImg(data):
     return(render_template('formHelpers.html',data=data,base=base64))
 
 @application.route('/Perfil/<data>',methods=['GET','POST'])
-@login_required
+#@login_required
 def perfil(data):
     data.encode("utf-8")
     data=base64.b64decode(data)
@@ -65,7 +65,7 @@ def perfil(data):
 
 
 @application.route('/Inicio',methods=['GET','POST'])
-@login_required
+#@login_required
 def inicio():
     headings = ("Usuario", "Nombre", "Apellido", "Identificacion",
     "Comprobante de domicilio","Carta de antecedentes no penales","Aprobar")
