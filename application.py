@@ -27,12 +27,18 @@ bootstrap = Bootstrap(application)
 moment = Moment(application)
 user=None
 
+# @login_manager.user_loader
+# def load_user(user_id):
+#     for user in users:
+#         if user.id == int(user_id):
+#             return user
+#     return None
+
 @login_manager.user_loader
 def load_user(user_id):
-    for user in users:
-        if user.id == int(user_id):
-            return user
-    return None
+    
+    user=user_id
+
 
 def login_required(f):
     global user
