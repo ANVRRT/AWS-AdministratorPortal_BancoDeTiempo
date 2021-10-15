@@ -41,9 +41,10 @@ def load_user(user_id):
 
 
 def login_required(f):
-    global user
+
     @wraps(f)
     def decorated_function(*args,**kwargs):
+        global user
         if user is None:
             return redirect(url_for('login'))
         return f(*args, **kwargs)
@@ -59,7 +60,7 @@ def loadImg(data):
     return(render_template('formHelpers.html',data=data,base=base64))
 
 @application.route('/Perfil/<data>',methods=['GET','POST'])
-#@login_required
+@login_required
 def perfil(data):
     data.encode("utf-8")
     data=base64.b64decode(data)
@@ -71,7 +72,7 @@ def perfil(data):
 
 
 @application.route('/Inicio',methods=['GET','POST'])
-#@login_required
+@login_required
 def inicio():
     headings = ("Usuario", "Nombre", "Apellido", "Identificacion",
     "Comprobante de domicilio","Carta de antecedentes no penales","Aprobar")
