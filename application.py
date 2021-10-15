@@ -9,7 +9,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 # from werkzeug.security import generate_password_hash, check_password_hash
-from user import users
+#from user import users
 # from werkzeug.urls import url_parse
 import forms
 import hashlib
