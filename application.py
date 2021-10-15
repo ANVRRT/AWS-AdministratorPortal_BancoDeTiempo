@@ -85,7 +85,6 @@ def inicio():
 @application.route('/',methods=['GET','POST'])
 def login():
     global user
-    user=None
     idUsuario=None
     password=None
     msg=""
